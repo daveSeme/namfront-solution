@@ -19,7 +19,8 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/style.css">
 
-	<style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
         /* CSS for the modal */
         .modal {
             display: none;
@@ -442,26 +443,15 @@
 					<button onclick="closeSuccessModal()">Close</button>
 				</div>
 			</div>
-			
-			<script>
-				// JavaScript function to open the success modal
-				function openSuccessModal() {
-					document.getElementById("successModal").style.display = "block";
-				}
-			
-				// JavaScript function to close the success modal
-				function closeSuccessModal() {
-					document.getElementById("successModal").style.display = "none";
-				}
-			</script>
+		
 			<div class="row">
 				<div class="col-md-6 half ftco-animate">
 					<h2 class="mb-4">Don't hesitate to contact us</h2>
 					<form id="contactForm" action="https://formsubmit.co/4a15a65ba1f44301f47ebb63dc7ce8ab" method="POST">
-						<!--Honeypot creation-->
+						<!-- Honeypot creation -->
 						<input type="text" name="_honey" style="display: none;">
-						<!--Disable Captcha-->
-							<input type="hidden" name="_captcha" value="false">
+						<!-- Disable Captcha -->
+						<input type="hidden" name="_captcha" value="false">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -508,6 +498,43 @@
 					</form>
 				</div>
 			</div>
+			
+			<script>
+				// JavaScript function to open the success modal
+				function openSuccessModal() {
+					document.getElementById("successModal").style.display = "block";
+				}
+			
+				// JavaScript function to close the success modal
+				function closeSuccessModal() {
+					document.getElementById("successModal").style.display = "none";
+				}
+			
+				// Function to handle the actual form submission using AJAX
+				function submitForm() {
+					var formData = $('#contactForm').serialize(); // Serialize the form data
+			
+					$.ajax({
+						type: 'POST',
+						url: 'https://formsubmit.co/4a15a65ba1f44301f47ebb63dc7ce8ab', // Replace with your form submission URL
+						data: formData,
+						success: function (response) {
+							// Successful submission
+							openSuccessModal();
+						},
+						error: function () {
+							// Handle errors or show an error message to the user
+							alert('There was an error submitting the form.');
+						}
+					});
+				}
+			
+				// Attach the submitForm function to the form's submit event
+				$('#contactForm').on('submit', function (e) {
+					e.preventDefault(); // Prevent the default form submission
+					submitForm(); // Call the custom submitForm function
+				});
+			</script>
 		</div>
 	</section>
 
