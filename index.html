@@ -19,6 +19,28 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/style.css">
 
+	<style>
+        /* CSS for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            text-align: center;
+        }
+    </style>
 	
 </head>
 <body>
@@ -413,6 +435,25 @@
 	<section class="ftco-appointment ftco-section img" style="background-image: url(images/bg_2.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
+			<div class="modal" id="successModal">
+				<div class="modal-content">
+					<h2>Message Sent Successfully</h2>
+					<p>Thank you for your message.</p>
+					<button onclick="closeSuccessModal()">Close</button>
+				</div>
+			</div>
+			
+			<script>
+				// JavaScript function to open the success modal
+				function openSuccessModal() {
+					document.getElementById("successModal").style.display = "block";
+				}
+			
+				// JavaScript function to close the success modal
+				function closeSuccessModal() {
+					document.getElementById("successModal").style.display = "none";
+				}
+			</script>
 			<div class="row">
 				<div class="col-md-6 half ftco-animate">
 					<h2 class="mb-4">Don't hesitate to contact us</h2>
