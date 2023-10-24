@@ -491,7 +491,8 @@
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="submit" value="Send message" class="btn btn-primary py-3 px-4">
+									<button type="button" id="submitButton" class="btn btn-primary py-3 px-4" onclick="submitForm()">Send message</button>
+									<div id="loadingMessage" style="display: none;">Loading...</div>
 								</div>
 							</div>
 						</div>
@@ -513,6 +514,9 @@
 			
 				// Function to handle the actual form submission using AJAX
 				function submitForm() {
+					document.getElementById("loadingMessage").style.display = "block"; // Show loading message
+					document.getElementById("submitButton").style.display = "none"; // Hide the submit button
+			
 					var formData = $('#contactForm').serialize(); // Serialize the form data
 			
 					$.ajax({
@@ -522,21 +526,23 @@
 						success: function (response) {
 							// Successful submission
 							openSuccessModal();
+							document.getElementById("loadingMessage").style.display = "none"; // Hide loading message
+							document.getElementById("submitButton").style.display = "block"; // Show the submit button
 						},
 						error: function () {
 							// Handle errors or show an error message to the user
 							alert('There was an error submitting the form.');
+							document.getElementById("loadingMessage").style.display = "none"; // Hide loading message
+							document.getElementById("submitButton").style.display = "block"; // Show the submit button
 						}
 					});
 				}
-			
-				// Attach the submitForm function to the form's submit event
-				$('#contactForm').on('submit', function (e) {
-					e.preventDefault(); // Prevent the default form submission
-					submitForm(); // Call the custom submitForm function
-				});
 			</script>
-		</div>
+			
+			
+				
+			
+			</div>
 	</section>
 
 	<footer class="ftco-footer ftco-footer-2 ftco-section">
