@@ -443,7 +443,7 @@
 					<button onclick="closeSuccessModal()">Close</button>
 				</div>
 			</div>
-		
+			
 			<div class="row">
 				<div class="col-md-6 half ftco-animate">
 					<h2 class="mb-4">Don't hesitate to contact us</h2>
@@ -505,9 +505,10 @@
 					document.getElementById("successModal").style.display = "block";
 				}
 			
-				// JavaScript function to close the success modal
+				// JavaScript function to close the success modal and clear the message field
 				function closeSuccessModal() {
 					document.getElementById("successModal").style.display = "none";
+					document.getElementById("message").value = ''; // Clear the message field
 				}
 			
 				// Function to handle the actual form submission using AJAX
